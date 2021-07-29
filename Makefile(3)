@@ -1,0 +1,53 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jorenius <jorenius@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/07/26 09:14:15 by jorenius          #+#    #+#              #
+#    Updated: 2021/07/28 20:31:23 by jorenius         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = bsq
+
+SRCDIR = srcs
+
+HEADDIR = includes
+
+SRC =$(SRCDIR)/find.c\
+	  $(SRCDIR)/helpers.c \
+	  $(SRCDIR)/input.c \
+	  $(SRCDIR)/parse.c \
+	  $(SRCDIR)/print_square.c \
+	  $(SRCDIR)/ft_atoi.c \
+	  $(SRCDIR)/ft_string.c \
+	  $(SRCDIR)/main.c \
+	  $(SRCDIR)/error.c \
+	  $(SRCDIR)/read_file.c \
+
+OBJ = find.o \
+	  helpers.o \
+	  input.o \
+	  parse.o \
+	  print_square.o \
+	  ft_atoi.o \
+	  ft_string.o \
+	  main.o \
+	  error.o \
+	  read_file.o \
+
+all : $(NAME)
+
+$(NAME):
+	gcc -Wall -Wextra -Werror -c -I$(HEADDIR) $(SRC)
+	gcc -Wall -Wextra -Werror -o $(NAME) $(OBJ)
+
+clean:
+	/bin/rm -f $(OBJ)
+
+fclean: clean
+	/bin/rm -f $(NAME)
+
+re: fclean all

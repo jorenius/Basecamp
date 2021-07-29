@@ -1,0 +1,33 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jorenius <jorenius@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/07/19 10:21:49 by jorenius          #+#    #+#              #
+#    Updated: 2021/07/22 13:09:54 by jorenius         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME = libft.a
+PATH_SRCS = $(wildcard srcs/*.c)
+HEADER = includes/
+FLAG = -Wall -Wextra -Werror
+OPTION = -c -I $(HEADER)
+SRCS = $(PATH_SRCS)ft_putchar.c $(PATH_SRCS)ft_putstr.c $(PATH_SRCS)ft_strcmp.c $(PATH_SRCS)ft_strlen.c $(PATH_SRCS)ft_swap.c
+OBJ = ft_putchar.o ft_putstr.o ft_strcmp.o ft_strlen.o ft_swap.o
+
+all: $(NAME)
+
+$(NAME):
+	gcc $(FLAG) $(OPTION) $(PATH_SRCS)
+	ar rcs $(NAME) $(OBJ)
+
+clean:
+	rm -f $(OBJ)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
